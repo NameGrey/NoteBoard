@@ -1,17 +1,15 @@
 ﻿using System;
 using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
 using Android.OS;
 
 namespace NoteBoardAndroidApp
 {
 	[Activity(Label = "NoteBoardAndroidApp", MainLauncher = true, Icon = "@drawable/icon")]
-	public class MainActivity: Activity
+	public class MainActivity : Activity
 	{
-		int count = 1;
+		private SpeechHandler.SpeechHandler speechHandler = new SpeechHandler.SpeechHandler();
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -22,9 +20,23 @@ namespace NoteBoardAndroidApp
 
 			// Get our button from the layout resource,
 			// and attach an event to it
-			Button button = FindViewById<Button>(Resource.Id.MyButton);
+		}
 
-			button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+		private void StartRecordingButtonOnClick(object sender, EventArgs e)
+		{
+			this.StartActivityForResult(speechHandler.StartRecording(), SpeechHandler.SpeechHandler.EndOfRecording);
+		}
+
+		protected override void OnActivityResult(int requestCode, Result resultVal, Intent data)
+		{
+			if (requestCode == SpeechHandler.SpeechHandler.EndOfRecording)
+			{
+				if (resultVal == Result.Ok)
+				{
+					
+				}
+			}
+			base.OnActivityResult(requestCode, resultVal, data);
 		}
 	}
 }
