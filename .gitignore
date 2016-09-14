@@ -40,3 +40,4 @@ captures/
 *.jks
 NoteBoardAndroidApp/obj/
 packages/
+AzureNoteService/obj/
