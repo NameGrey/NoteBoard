@@ -66,8 +66,7 @@
     <Compile Include="Services\EntityServices\NoteGroupService.cs" />
     <Compile Include="Services\EntityServices\NoteService.cs" />
     <Compile Include="Services\JsonTransformer\IJsonTransformer.cs" />
-    <Compile Include="Services\JsonTransformer\NoteGroupJsonTransformer.cs" />
-    <Compile Include="Services\JsonTransformer\NotesJsonTransformer.cs" />
+    <Compile Include="Services\JsonTransformer\JsonTransformer.cs" />
     <Compile Include="Services\UriResolver\UriResolver.cs" />
     <Compile Include="SpeechHandler\SpeechHandler.cs" />
   </ItemGroup>
