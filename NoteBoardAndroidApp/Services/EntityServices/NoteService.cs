@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using NoteBoardAndroidApp.Models;
+using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
+using NoteBoardAndroidApp.Services.JsonTransformer;
 
 namespace NoteBoardAndroidApp.Services.EntityServices
 {
-	public class NoteService<E, R>: IEntityServices<E>
+	public class NoteService: GenericEntityService<Note>
 	{
+		public NoteService(IAzureServiceCommunicator azureCommunicator, IJsonTransformer<Note> jsonTransformer)
+			: base(azureCommunicator, jsonTransformer)
+		{
 
-		
+		}
 	}
 }
