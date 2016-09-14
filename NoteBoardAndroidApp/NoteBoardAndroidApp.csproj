@@ -43,6 +43,10 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,11 +54,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\NoteGroup.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AzureResponse.cs" />
+    <Compile Include="Services\AzureServiceCommunicator\AzureServiceCommunicator.cs" />
+    <Compile Include="Services\AzureServiceCommunicator\IAzureServiceCommunicator.cs" />
+    <Compile Include="Services\EntityServices\GenericEntityService.cs" />
+    <Compile Include="Services\EntityServices\IEntityServices.cs" />
+    <Compile Include="Services\EntityServices\NoteGroupService.cs" />
+    <Compile Include="Services\EntityServices\NoteService.cs" />
+    <Compile Include="Services\JsonTransformer\IJsonTransformer.cs" />
+    <Compile Include="Services\JsonTransformer\NoteGroupJsonTransformer.cs" />
+    <Compile Include="Services\JsonTransformer\NotesJsonTransformer.cs" />
+    <Compile Include="Services\UriResolver\UriResolver.cs" />
+    <Compile Include="SpeechHandler\SpeechHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
@@ -72,6 +91,10 @@
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\microphoneNotActive.jpg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
