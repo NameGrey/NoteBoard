@@ -6,7 +6,7 @@ namespace NoteBoardAndroidApp.Services.JsonTransformer
 {
 	public class NoteGroupJsonTransformer: IJsonTransformer<NoteGroup>
 	{
-		public string FromCollectionToJson(IEnumerable<NoteGroup> collection)
+		public string FromEntityToJson(NoteGroup entity)
 		{
 			throw new NotImplementedException();
 		}

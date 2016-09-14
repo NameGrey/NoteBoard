@@ -7,12 +7,12 @@ namespace NoteBoardAndroidApp.Services.UriResolver
 	{
 		private const string GetNotesUrl = "\notes";
 		private const string GetNoteByIdUrl = "\note\\{0}";
-		private const string AddNewNoteUrl = "\note\\{0}";
+		private const string AddNewNoteUrl = "\note";
 		private const string DeleteNoteUrl = "\note\\{0}";
 
 		private const string GetGroupsOfNotesUrl = "\notes";
 		private const string GetGroupOfNoteByIdUrl = "\note\\{0}";
-		private const string AddNewGroupOfNoteUrl = "\note\\{0}";
+		private const string AddNewGroupOfNoteUrl = "\note";
 		private const string DeleteGroupOfNoteUrl = "\note\\{0}";
 
 		public static string GetCollectionUrl(Type entityType)
@@ -31,7 +31,7 @@ namespace NoteBoardAndroidApp.Services.UriResolver
 				return GetGroupOfNoteByIdUrl;
 		}
 
-		public static string GetAddNewNoteUrl(Type entityType)
+		public static string GetAddNewUrl(Type entityType)
 		{
 			if (entityType == typeof(Note))
 				return AddNewNoteUrl;
@@ -39,7 +39,7 @@ namespace NoteBoardAndroidApp.Services.UriResolver
 				return AddNewGroupOfNoteUrl;
 		}
 
-		public static string GetDeleteNoteUrl(Type entityType)
+		public static string GetDeleteActionUrl(Type entityType)
 		{
 			if (entityType == typeof(Note))
 				return DeleteNoteUrl;

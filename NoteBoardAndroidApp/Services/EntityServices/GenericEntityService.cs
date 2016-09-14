@@ -6,12 +6,12 @@ using Debug = System.Diagnostics.Debug;
 
 namespace NoteBoardAndroidApp.Services.EntityServices
 {
-	public class GenericEntityService<E> : IEntityServices<E> 
+	public class GenericEntityService<E>: IEntityServices<E>
 	{
 		private IAzureServiceCommunicator azureCommunicator;
 		private readonly IJsonTransformer<E> jsonTransformer;
 
-		public GenericEntityService(IAzureServiceCommunicator azureCommunicator, IJsonTransformer<E> jsonTransformer )
+		public GenericEntityService(IAzureServiceCommunicator azureCommunicator, IJsonTransformer<E> jsonTransformer)
 		{
 			this.azureCommunicator = azureCommunicator;
 			this.jsonTransformer = jsonTransformer;
@@ -20,8 +20,8 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 		public E GetEntityById(int id)
 		{
 			E result = default(E);
-			var response = azureCommunicator.SendRequest(String.Empty, UriResolver.UriResolver.GetEntityByIdUrl(typeof (E)),
-				"GET");
+			var url = String.Format(UriResolver.UriResolver.GetEntityByIdUrl(typeof(E)), id);
+			var response = azureCommunicator.SendRequest(String.Empty, url, "GET");
 
 			if (response.Status == 200)
 			{
@@ -37,17 +37,44 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 
 		public IEnumerable<E> GetCollection()
 		{
-			throw new NotImplementedException();
+			IEnumerable<E> result = default(IEnumerable<E>);
+
+			var response = azureCommunicator.SendRequest(String.Empty, UriResolver.UriResolver.GetCollectionUrl(typeof(E)),
+				"GET");
+
+			if (response.Status == 200)
+			{
+				result = jsonTransformer.FromJsonToCollection(response.Data);
+			}
+			else
+			{
+				Debug.Print("Server Error: {0}", response.ErrorMessage);
+			}
+
+			return result;
 		}
 
 		public void Add(E entity)
 		{
-			throw new NotImplementedException();
+			var data = jsonTransformer.FromEntityToJson(entity);
+			var response = azureCommunicator.SendRequest(data, UriResolver.UriResolver.GetAddNewUrl(typeof(E)),
+				"POST");
+
+			if (response.Status != 200)
+			{
+				Debug.Print("Server Error: {0}", response.ErrorMessage);
+			}
 		}
 
 		public void Remove(int id)
 		{
-			throw new NotImplementedException();
+			var url = String.Format(UriResolver.UriResolver.GetDeleteActionUrl(typeof(E)), id);
+			var response = azureCommunicator.SendRequest(String.Empty, url, "DELETE");
+
+			if (response.Status != 200)
+			{
+				Debug.Print("Server Error: {0}", response.ErrorMessage);
+			}
 		}
 	}
 }
