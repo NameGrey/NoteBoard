@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using NoteBoardAndroidApp.Models;
 
 namespace NoteBoardAndroidApp.Services.JsonTransformer
@@ -8,17 +9,17 @@ namespace NoteBoardAndroidApp.Services.JsonTransformer
 	{
 		public string FromEntityToJson(Note entity)
 		{
-			throw new NotImplementedException();
+			return JsonConvert.SerializeObject(entity);
 		}
 
 		public ICollection<Note> FromJsonToCollection(string data)
 		{
-			throw new NotImplementedException();
+			return JsonConvert.DeserializeObject<ICollection<Note>>(data);
 		}
 
 		public Note FromJsonToEntity(string data)
 		{
-			throw new NotImplementedException();
+			return JsonConvert.DeserializeObject<Note>(data);
 		}
 	}
 }
