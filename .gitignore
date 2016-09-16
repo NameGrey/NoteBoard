@@ -41,3 +41,4 @@ captures/
 NoteBoardAndroidApp/obj/
 packages/
 AzureNoteService/obj/
+AzureNoteService.DAL/obj/
