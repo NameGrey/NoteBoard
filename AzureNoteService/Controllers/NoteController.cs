@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using AzureNoteService.DAL;
 using AzureNoteService.DAL.Entities;
@@ -6,7 +8,7 @@ using AzureNoteService.Repository;
 
 namespace AzureNoteService.Controllers
 {
-	[RoutePrefix("api")]
+	[RoutePrefix("api/notes")]
 	public class NoteController : ApiController
 	{
 		private IRepository<Note> noteRepository;
@@ -18,13 +20,48 @@ namespace AzureNoteService.Controllers
 			noteRepository = new DbNoteRepository(context);
 		}
 
-		[Route("notes")]
-		public string GetCollection()
+		[HttpGet]
+		[Route("")]
+		public IEnumerable<Note> GetCollection()
 		{
-			var notes = noteRepository.GetCollection();
-
-			return "Hello World! There are several notes - " + notes.Count();
+			return noteRepository.GetCollection();
 		}
 
+		[HttpGet]
+		[Route("{id}")]
+		public Note GetById(int id)
+		{
+			return noteRepository.GetByID(id);
+		}
+
+		[HttpPost]
+		[Route("")]
+		public IHttpActionResult Insertnote(Note note)
+		{
+			try
+			{
+				noteRepository.Insert(note);
+				return Ok();
+			}
+			catch (Exception)
+			{
+				return InternalServerError();
+			}
+		}
+
+		[HttpDelete]
+		[Route("")]
+		public IHttpActionResult DeleteNote(int id)
+		{
+			try
+			{
+				noteRepository.Delete(id);
+				return Ok();
+			}
+			catch (Exception)
+			{
+				return InternalServerError();
+			}
+		}
 	}
 }
