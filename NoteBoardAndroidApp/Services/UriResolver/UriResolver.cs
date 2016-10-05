@@ -10,10 +10,10 @@ namespace NoteBoardAndroidApp.Services.UriResolver
 		private const string AddNewNoteUrl = "\note";
 		private const string DeleteNoteUrl = "\note\\{0}";
 
-		private const string GetGroupsOfNotesUrl = "\notes";
-		private const string GetGroupOfNoteByIdUrl = "\note\\{0}";
-		private const string AddNewGroupOfNoteUrl = "\note";
-		private const string DeleteGroupOfNoteUrl = "\note\\{0}";
+		private const string GetGroupsOfNotesUrl = "\noteGroups";
+		private const string GetGroupOfNoteByIdUrl = "\noteGroups\\{0}";
+		private const string AddNewGroupOfNoteUrl = "\noteGroups";
+		private const string DeleteGroupOfNoteUrl = "\noteGroups\\{0}";
 
 		public static string GetCollectionUrl(Type entityType)
 		{
