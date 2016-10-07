@@ -9,7 +9,7 @@ namespace AzureNoteService.Repository
 		IEnumerable<T> GetCollection();
 		void Insert(T item);
 
-		void Delete(int id);
+		void Delete(string name);
 
 		void Update(T pet);
 	}

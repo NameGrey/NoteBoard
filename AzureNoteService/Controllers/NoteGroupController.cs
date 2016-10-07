@@ -50,11 +50,11 @@ namespace AzureNoteService.Controllers
 
 		[HttpDelete]
 		[Route("")]
-		public IHttpActionResult DeleteNoteGroup(int id)
+		public IHttpActionResult DeleteNoteGroup(string name)
 		{
 			try
 			{
-				noteGroupRepository.Delete(id);
+				noteGroupRepository.Delete(name);
 				return Ok();
 			}
 			catch (Exception)

@@ -32,9 +32,9 @@ namespace AzureNoteService.Repository
 			dbSet.Add(item);
 		}
 
-		public void Delete(int id)
+		public void Delete(string name)
 		{
-			T entityToDelete = dbSet.Find(id);
+			T entityToDelete = dbSet.First(i => i.Name == name);
 			Delete(entityToDelete);
 		}
 
