@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
+using NoteBoardAndroidApp.Services.ActionBarTabManager;
 
 namespace NoteBoardAndroidApp
 {
@@ -15,11 +17,10 @@ namespace NoteBoardAndroidApp
 		{
 			base.OnCreate(bundle);
 
-			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
 
-			// Get our button from the layout resource,
-			// and attach an event to it
+			ActionBarTabManager tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
+				Resource.Id.actionMenuView, new List<string>() {"First Tab", "Second Tab"});
 		}
 
 		private void StartRecordingButtonOnClick(object sender, EventArgs e)

@@ -66,6 +66,15 @@ namespace NoteBoardAndroidApp
 			// aapt resource value: 0x7f050000
 			public const int RecordButton = 2131034112;
 			
+			// aapt resource value: 0x7f050002
+			public const int actionMenuView = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int scrollView = 2131034115;
+			
+			// aapt resource value: 0x7f050001
+			public const int space1 = 2131034113;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -81,6 +90,9 @@ namespace NoteBoardAndroidApp
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int TabLayout = 2130903041;
 			
 			static Layout()
 			{
