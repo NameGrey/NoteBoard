@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Widget;
 using Android.OS;
+using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.ActionBarTabManager;
+using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
+using NoteBoardAndroidApp.Services.EntityServices;
+using NoteBoardAndroidApp.Services.JsonTransformer;
 
 namespace NoteBoardAndroidApp
 {
@@ -19,8 +24,12 @@ namespace NoteBoardAndroidApp
 
 			SetContentView(Resource.Layout.Main);
 
+			var azureCommunicator = new AzureServiceCommunicator();
+			var noteService = new NoteService(azureCommunicator, new JsonTransformer<Note>());
+			var noteGroupService = new NoteGroupService(azureCommunicator, new JsonTransformer<NoteGroup>());
+
 			ActionBarTabManager tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
-				Resource.Id.actionMenuView, new List<string>() {"First Tab", "Second Tab"});
+				Resource.Id.actionMenuView, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
 		}
 
 		private void StartRecordingButtonOnClick(object sender, EventArgs e)

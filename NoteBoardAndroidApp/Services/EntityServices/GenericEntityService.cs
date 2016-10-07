@@ -66,9 +66,9 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 			}
 		}
 
-		public void Remove(int id)
+		public void Remove(string name)
 		{
-			var url = String.Format(UriResolver.UriResolver.GetDeleteActionUrl(typeof(E)), id);
+			var url = String.Format(UriResolver.UriResolver.GetDeleteActionUrl(typeof(E)), name);
 			var response = azureCommunicator.SendRequest(String.Empty, url, "DELETE");
 
 			if (response.Status != 200)

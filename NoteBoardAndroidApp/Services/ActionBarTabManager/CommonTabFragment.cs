@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -9,6 +10,8 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 	public class CommonTabFragment : Fragment
 	{
 		private IEnumerable<string> items;
+
+		public EventHandler<string> ItemClick;
 
 		public CommonTabFragment(IEnumerable<string> items)
 		{
@@ -27,11 +30,23 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 			{
 				var button = new Button(this.Context);
 				button.SetText(item, TextView.BufferType.Normal);
+				button.Click += OnItemClick; ;
 
 				view.FindViewById<LinearLayout>(Resource.Id.linearVerticalLayout).AddView(button);
 			}
 
 			return view;
+		}
+
+		private void OnItemClick(object sender, EventArgs e)
+		{
+			if (ItemClick != null)
+			{
+				Button button = (Button) sender;
+				string args = button.Text;
+
+				ItemClick(sender, args);
+			}
 		}
 	}
 }

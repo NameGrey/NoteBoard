@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-
+using System.Linq;
 using Android.App;
 using Java.Security;
+using NoteBoardAndroidApp.Models;
+using NoteBoardAndroidApp.Services.EntityServices;
 
 namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 {
@@ -10,9 +12,10 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 		private ActionBar actionBar;
 		private FragmentManager fragmentManager;
 		private int containerId;
+		private IEntityServices<Note> noteService;
 
 		public ActionBarTabManager(ActionBar actionBar, FragmentManager fragmentManager,
-			int containerId, IEnumerable<string> namesOfTabs)
+			int containerId, IEnumerable<string> namesOfTabs, IEntityServices<Note> noteService)
 		{
 			if(actionBar == null)
 				throw new InvalidParameterException("ActionBar should be initialized");
@@ -23,6 +26,7 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 			this.actionBar = actionBar;
 			this.fragmentManager = fragmentManager;
 			this.containerId = containerId;
+			this.noteService = noteService;
 
 			CustomizeActionBar();
 			InitializeActionBar(namesOfTabs);
@@ -37,11 +41,14 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 		{
 			foreach (var tabName in tabNames)
 			{
-				// TODO: add refreshing of items of the tab
-				var items = new List<string>() { "first item", "secondItem" };
-				items.Add(tabName); 
+				var items = noteService.GetCollection().Select(i=>i.Name);
+				var tabFragment = new CommonTabFragment(items);
+				tabFragment.ItemClick += (sender, clickedItemName) =>
+				{
+					noteService.Remove(clickedItemName);
+				};
 
-				var tab = actionBar.NewTab();
+			var tab = actionBar.NewTab();
 
 				tab.SetText(tabName);
 				tab.TabSelected += (sender, e) =>
@@ -49,11 +56,13 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 					var fragment = fragmentManager.FindFragmentById(containerId);
 					if (fragment != null)
 						e.FragmentTransaction.Remove(fragment);
-					e.FragmentTransaction.Add(containerId, new CommonTabFragment(items));
+
+					
+					e.FragmentTransaction.Add(containerId, tabFragment);
 				};
 				tab.TabUnselected += (sender, e) =>
 				{
-					e.FragmentTransaction.Remove(new CommonTabFragment(items));
+					e.FragmentTransaction.Remove(tabFragment);
 				};
 
 				actionBar.AddTab(tab);

@@ -7,6 +7,6 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 		T GetEntityById(int id);
 		IEnumerable<T> GetCollection();
 		void Add(T entity);
-		void Remove(int id);
+		void Remove(string name);
 	}
 }
