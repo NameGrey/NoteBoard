@@ -37,26 +37,27 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 		{
 			foreach (var tabName in tabNames)
 			{
+				// TODO: add refreshing of items of the tab
+				var items = new List<string>() { "first item", "secondItem" };
+				items.Add(tabName); 
+
 				var tab = actionBar.NewTab();
+
 				tab.SetText(tabName);
-				tab.TabSelected += OnTabSelected;
-				tab.TabUnselected += OnTabUnselected;
+				tab.TabSelected += (sender, e) =>
+				{
+					var fragment = fragmentManager.FindFragmentById(containerId);
+					if (fragment != null)
+						e.FragmentTransaction.Remove(fragment);
+					e.FragmentTransaction.Add(containerId, new CommonTabFragment(items));
+				};
+				tab.TabUnselected += (sender, e) =>
+				{
+					e.FragmentTransaction.Remove(new CommonTabFragment(items));
+				};
 
 				actionBar.AddTab(tab);
 			}
-		}
-
-		private void OnTabSelected(object sender, ActionBar.TabEventArgs e)
-		{
-			var fragment = fragmentManager.FindFragmentById(containerId);
-			if (fragment != null)
-				e.FragmentTransaction.Remove(fragment);
-			e.FragmentTransaction.Add(containerId, new CommonTabFragment());
-		}
-
-		private void OnTabUnselected(object sender, ActionBar.TabEventArgs e)
-		{
-			e.FragmentTransaction.Remove(new CommonTabFragment());
 		}
 	}
 }

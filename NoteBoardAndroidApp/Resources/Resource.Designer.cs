@@ -69,6 +69,9 @@ namespace NoteBoardAndroidApp
 			// aapt resource value: 0x7f050002
 			public const int actionMenuView = 2131034114;
 			
+			// aapt resource value: 0x7f050004
+			public const int linearVerticalLayout = 2131034116;
+			
 			// aapt resource value: 0x7f050003
 			public const int scrollView = 2131034115;
 			
