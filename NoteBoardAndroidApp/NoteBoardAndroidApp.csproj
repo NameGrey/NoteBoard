@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\NoteGroup.cs" />
     <Compile Include="Services\ActionBarTabManager\CommonTabFragment.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -96,12 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\microphoneNotActive.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AzureNoteService.DAL\AzureNoteService.DAL.csproj">
-      <Project>{a4345027-5357-4a3b-8d14-14a1e7b6aa12}</Project>
-      <Name>AzureNoteService.DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

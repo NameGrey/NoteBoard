@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
-using AzureNoteService.DAL.Entities;
 using Java.Security;
+using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.EntityServices;
 
 namespace NoteBoardAndroidApp.Services.ActionBarTabManager

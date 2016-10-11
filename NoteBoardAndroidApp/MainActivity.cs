@@ -3,7 +3,7 @@ using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using AzureNoteService.DAL.Entities;
+using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.ActionBarTabManager;
 using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
 using NoteBoardAndroidApp.Services.EntityServices;
