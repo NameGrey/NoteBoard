@@ -55,6 +55,7 @@ namespace AzureNoteService.Controllers
 			try
 			{
 				noteRepository.Delete(name);
+				noteRepository.SaveChanges();
 				return Ok();
 			}
 			catch (Exception)

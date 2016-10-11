@@ -61,5 +61,10 @@ namespace AzureNoteService.Repository
 			dbSet.Attach(pet);
 			context.Entry(pet).State = EntityState.Modified;
 		}
+
+		public void SaveChanges()
+		{
+			context.SaveChanges();
+		}
 	}
 }

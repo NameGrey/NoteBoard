@@ -12,5 +12,7 @@ namespace AzureNoteService.Repository
 		void Delete(string name);
 
 		void Update(T pet);
+
+		void SaveChanges();
 	}
 }
