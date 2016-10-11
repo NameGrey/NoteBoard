@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using AzureNoteService.DAL.Entities;
 using Java.Security;
-using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.EntityServices;
 
 namespace NoteBoardAndroidApp.Services.ActionBarTabManager
@@ -41,7 +41,9 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 		{
 			foreach (var tabName in tabNames)
 			{
-				var items = noteService.GetCollection().Select(i=>i.Name);
+				// TODO: use names as primary keys
+				// TODO: use group service here instaed of list of names for groups
+				var items = noteService.GetCollection().Where(i=>i.GroupName == tabName).Select(i=>i.Name);
 				var tabFragment = new CommonTabFragment(items);
 				tabFragment.ItemClick += (sender, clickedItemName) =>
 				{

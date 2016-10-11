@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using AzureNoteService.DAL;
 using AzureNoteService.DAL.Entities;
@@ -28,10 +27,10 @@ namespace AzureNoteService.Controllers
 		}
 
 		[HttpGet]
-		[Route("{id}")]
-		public Note GetById(int id)
+		[Route("{name}")]
+		public Note GetById(string name)
 		{
-			return noteRepository.GetByID(id);
+			return noteRepository.GetByName(name);
 		}
 
 		[HttpPost]

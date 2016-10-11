@@ -1,4 +1,4 @@
-using NoteBoardAndroidApp.Models;
+using AzureNoteService.DAL.Entities;
 using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
 using NoteBoardAndroidApp.Services.JsonTransformer;
 

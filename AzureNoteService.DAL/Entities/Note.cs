@@ -2,10 +2,9 @@
 {
 	public class Note: IEntity
 	{
-		public int Id { get; set; }
 		public string Name { get; set; }
 
-		public int GroupId { get; set; }
+		public string GroupName { get; set; }
 
 		public NoteGroup NoteGroup { get; set; }
 	}

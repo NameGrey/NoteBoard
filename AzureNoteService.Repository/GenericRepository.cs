@@ -17,9 +17,9 @@ namespace AzureNoteService.Repository
 			dbSet = context.Set<T>();
 		}
 
-		public T GetByID(int id)
+		public T GetByName(string name)
 		{
-			return dbSet.Find(id);
+			return dbSet.Find(name);
 		}
 
 		public IEnumerable<T> GetCollection()
@@ -40,7 +40,7 @@ namespace AzureNoteService.Repository
 
 		private void Delete(T entityToDelete)
 		{
-			var local = context.Set<T>().Local.FirstOrDefault(x => x.Id == entityToDelete.Id);
+			var local = context.Set<T>().Local.FirstOrDefault(x => x.Name == entityToDelete.Name);
 			if (local != null)
 				context.Entry(local).State = EntityState.Detached;
 
@@ -54,7 +54,7 @@ namespace AzureNoteService.Repository
 
 		public void Update(T pet)
 		{
-			var local = context.Set<NoteGroup>().Local.FirstOrDefault(x => x.Id == pet.Id);
+			var local = context.Set<NoteGroup>().Local.FirstOrDefault(x => x.Name == pet.Name);
 			if (local != null)
 				context.Entry(local).State = EntityState.Detached;
 

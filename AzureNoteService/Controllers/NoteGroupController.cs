@@ -27,10 +27,10 @@ namespace AzureNoteService.Controllers
 		}
 
 		[HttpGet]
-		[Route("{id}")]
-		public NoteGroup GetById(int id)
+		[Route("{name}")]
+		public NoteGroup GetByName(string name)
 		{
-			return noteGroupRepository.GetByID(id);
+			return noteGroupRepository.GetByName(name);
 		}
 
 		[HttpPost]

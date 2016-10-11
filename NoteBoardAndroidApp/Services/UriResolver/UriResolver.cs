@@ -1,5 +1,5 @@
 using System;
-using NoteBoardAndroidApp.Models;
+using AzureNoteService.DAL.Entities;
 
 namespace NoteBoardAndroidApp.Services.UriResolver
 {

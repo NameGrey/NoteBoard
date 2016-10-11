@@ -19,7 +19,13 @@ namespace AzureNoteService.DAL
 			modelBuilder.Entity<Note>()
 				.HasRequired(i => i.NoteGroup)
 				.WithMany()
-				.HasForeignKey(i => i.GroupId);
+				.HasForeignKey(i => i.GroupName);
+
+			modelBuilder.Entity<Note>()
+				.HasKey(i => i.Name);
+
+			modelBuilder.Entity<NoteGroup>()
+				.HasKey(i => i.Name);
 		}
 	}
 }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Android.App;
 using Android.Content;
-using Android.Widget;
 using Android.OS;
-using NoteBoardAndroidApp.Models;
+using AzureNoteService.DAL.Entities;
 using NoteBoardAndroidApp.Services.ActionBarTabManager;
 using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
 using NoteBoardAndroidApp.Services.EntityServices;
