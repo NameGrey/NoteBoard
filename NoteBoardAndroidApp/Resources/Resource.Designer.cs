@@ -67,7 +67,7 @@ namespace NoteBoardAndroidApp
 		{
 			
 			// aapt resource value: 0x7f050003
-			public const int AddNote = 2131034115;
+			public const int AddNoteButton = 2131034115;
 			
 			// aapt resource value: 0x7f050000
 			public const int RecordButton = 2131034112;
