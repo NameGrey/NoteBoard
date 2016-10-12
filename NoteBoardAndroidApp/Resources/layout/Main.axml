@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
         android:layout_marginRight="0.0dp"
-        android:background="@drawable/microphonenotactive" />
+        android:background="@drawable/microphonenotactive_up" />
     <LinearLayout
         android:orientation="horizontal"
         android:minWidth="25px"
