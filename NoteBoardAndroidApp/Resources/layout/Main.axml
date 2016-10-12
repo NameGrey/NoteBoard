@@ -27,11 +27,11 @@
         <RelativeLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="0.1" />
+            android:layout_weight="0.2" />
         <RelativeLayout
             android:layout_width="0dip"
             android:layout_height="match_parent"
-            android:layout_weight="0.6"
+            android:layout_weight="0.5"
             android:minWidth="25px"
             android:minHeight="25px">
             <EditText
