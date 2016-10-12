@@ -11,17 +11,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/RecordButton"
-        android:background="@drawable/microphonenotactive"
         android:layout_centerInParent="true"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal" />
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/space1" />
-    <ActionMenuView
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="0.0dp"
+        android:background="@drawable/microphonenotactive" />
+    <LinearLayout
+        android:orientation="horizontal"
         android:minWidth="25px"
-        android:minHeight="25px"
+        android:minHeight="50px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_marginBottom="0.0dp">
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1" />
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6" />
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddNote"
+                android:background="@drawable/arrow_50h" />
+        </RelativeLayout>
+    </LinearLayout>
+    <ActionMenuView
+        android:minWidth="20px"
+        android:minHeight="20px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/actionMenuView" />
