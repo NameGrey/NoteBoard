@@ -51,10 +51,7 @@ namespace NoteBoardAndroidApp
 			public const int Icon = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int microphoneNotActive = 2130837506;
-			
-			// aapt resource value: 0x7f020003
-			public const int microphoneNotActive_up = 2130837507;
+			public const int microphoneNotActive_up = 2130837506;
 			
 			static Drawable()
 			{
@@ -69,23 +66,26 @@ namespace NoteBoardAndroidApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int AddNote = 2131034114;
+			// aapt resource value: 0x7f050003
+			public const int AddNote = 2131034115;
 			
 			// aapt resource value: 0x7f050000
 			public const int RecordButton = 2131034112;
 			
-			// aapt resource value: 0x7f050003
-			public const int actionMenuView = 2131034115;
+			// aapt resource value: 0x7f050004
+			public const int actionMenuView = 2131034116;
 			
 			// aapt resource value: 0x7f050001
 			public const int linearLayout1 = 2131034113;
 			
-			// aapt resource value: 0x7f050005
-			public const int linearVerticalLayout = 2131034117;
+			// aapt resource value: 0x7f050006
+			public const int linearVerticalLayout = 2131034118;
 			
-			// aapt resource value: 0x7f050004
-			public const int scrollView = 2131034116;
+			// aapt resource value: 0x7f050005
+			public const int scrollView = 2131034117;
+			
+			// aapt resource value: 0x7f050002
+			public const int textField = 2131034114;
 			
 			static Id()
 			{
