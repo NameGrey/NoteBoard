@@ -28,14 +28,27 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 
 			foreach (var item in items)
 			{
-				var button = new Button(this.Context);
-				button.SetText(item, TextView.BufferType.Normal);
-				button.Click += OnItemClick; ;
+				var button = CreateButton(item);
 
 				view.FindViewById<LinearLayout>(Resource.Id.linearVerticalLayout).AddView(button);
 			}
 
 			return view;
+		}
+
+		private Button CreateButton(string text)
+		{
+			var button = new Button(this.Context);
+			button.SetText(text, TextView.BufferType.Normal);
+			button.Click += OnItemClick;
+
+			return button;
+		}
+
+		public void CreateNewNoteButton(string noteText)
+		{
+			var button = CreateButton(noteText);
+			this.View.FindViewById<LinearLayout>(Resource.Id.linearVerticalLayout).AddView(button);
 		}
 
 		private void OnItemClick(object sender, EventArgs e)

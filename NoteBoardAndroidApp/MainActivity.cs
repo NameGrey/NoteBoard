@@ -3,6 +3,7 @@ using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Widget;
 using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.ActionBarTabManager;
 using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
@@ -26,8 +27,21 @@ namespace NoteBoardAndroidApp
 			var noteService = new NoteService(azureCommunicator, new JsonTransformer<Note>());
 			var noteGroupService = new NoteGroupService(azureCommunicator, new JsonTransformer<NoteGroup>());
 
+			FindViewById(Resource.Id.AddNoteButton).Click += AddNewNote;
+
 			ActionBarTabManager tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
 				Resource.Id.actionMenuView, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
+		}
+
+		private void AddNewNote(object sender, EventArgs e)
+		{
+			string noteText = FindViewById<TextView>(Resource.Id.textField).Text;
+
+			if (!String.IsNullOrEmpty(noteText))
+			{
+				var fragment = FragmentManager.FindFragmentById(Resource.Id.actionMenuView) as CommonTabFragment;
+				fragment.CreateNewNoteButton(noteText);
+			}
 		}
 
 		private void StartRecordingButtonOnClick(object sender, EventArgs e)
