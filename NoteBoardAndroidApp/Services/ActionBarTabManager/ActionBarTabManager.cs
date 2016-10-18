@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
@@ -45,6 +46,7 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 				// TODO: use group service here instaed of list of names for groups
 				var items = noteService.GetCollection().Where(i=>i.GroupName == tabName).Select(i=>i.Name);
 				var tabFragment = new CommonTabFragment(items);
+				
 				tabFragment.ItemClick += (sender, clickedItemName) =>
 				{
 					noteService.Remove(clickedItemName);
@@ -68,6 +70,19 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 				};
 
 				actionBar.AddTab(tab);
+			}
+		}
+
+		public void CreateNewNoteButton(string noteText)
+		{
+			if (!String.IsNullOrEmpty(noteText))
+			{
+				var fragment = fragmentManager.FindFragmentById(containerId) as CommonTabFragment;
+
+				if (fragment != null)
+				{
+					fragment.CreateNewNoteButton(noteText);
+				}
 			}
 		}
 	}

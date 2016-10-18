@@ -16,6 +16,7 @@ namespace NoteBoardAndroidApp
 	public class MainActivity : Activity
 	{
 		private SpeechHandler.SpeechHandler speechHandler = new SpeechHandler.SpeechHandler();
+		private ActionBarTabManager tabManager;
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -29,7 +30,7 @@ namespace NoteBoardAndroidApp
 
 			FindViewById(Resource.Id.AddNoteButton).Click += AddNewNote;
 
-			ActionBarTabManager tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
+			tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
 				Resource.Id.actionMenuView, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
 		}
 
@@ -37,11 +38,7 @@ namespace NoteBoardAndroidApp
 		{
 			string noteText = FindViewById<TextView>(Resource.Id.textField).Text;
 
-			if (!String.IsNullOrEmpty(noteText))
-			{
-				var fragment = FragmentManager.FindFragmentById(Resource.Id.actionMenuView) as CommonTabFragment;
-				fragment.CreateNewNoteButton(noteText);
-			}
+			tabManager.CreateNewNoteButton(noteText);
 		}
 
 		private void StartRecordingButtonOnClick(object sender, EventArgs e)
