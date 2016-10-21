@@ -6,8 +6,8 @@ namespace NoteBoardAndroidApp.Services.UriResolver
 	public static class UriResolver
 	{
 		private const string GetNotesUrl = "/notes";
-		private const string GetNoteByIdUrl = "/note/{0}";
-		private const string AddNewNoteUrl = "/note";
+		private const string GetNoteByIdUrl = "/notes/{0}";
+		private const string AddNewNoteUrl = "/notes";
 		private const string DeleteNoteUrl = "/notes?name={0}";
 
 		private const string GetGroupsOfNotesUrl = "/noteGroups";
