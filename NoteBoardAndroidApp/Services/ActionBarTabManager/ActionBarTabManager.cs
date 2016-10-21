@@ -81,6 +81,8 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 
 				if (fragment != null)
 				{
+					var groupName = actionBar.SelectedTab.Text;
+					noteService.Add(new Note() {GroupName = groupName, Name = noteText});
 					fragment.CreateNewNoteButton(noteText);
 				}
 			}
