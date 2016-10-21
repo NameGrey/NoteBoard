@@ -40,6 +40,7 @@ namespace AzureNoteService.Controllers
 			try
 			{
 				noteRepository.Insert(note);
+				noteRepository.SaveChanges();
 				return Ok();
 			}
 			catch (Exception)
