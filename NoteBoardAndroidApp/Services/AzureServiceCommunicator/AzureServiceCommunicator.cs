@@ -16,6 +16,14 @@ namespace NoteBoardAndroidApp.Services.AzureServiceCommunicator
 			request.ContentType = "application/json";
 			request.Method = method;
 
+			if (method == "POST")
+			{
+				using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+				{
+					streamWriter.Write(data);
+				}
+			}
+
 			try
 			{
 				result = FillInAzureResponse(request.GetResponse());
