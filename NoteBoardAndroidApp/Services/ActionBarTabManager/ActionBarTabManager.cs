@@ -61,7 +61,8 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 					if (fragment != null)
 						e.FragmentTransaction.Remove(fragment);
 
-					
+					items = noteService.GetCollection().Where(i => i.GroupName == tabName).Select(i => i.Name);
+					tabFragment = new CommonTabFragment(items);
 					e.FragmentTransaction.Add(containerId, tabFragment);
 				};
 				tab.TabUnselected += (sender, e) =>
