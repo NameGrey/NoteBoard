@@ -29,9 +29,10 @@ namespace NoteBoardAndroidApp
 			var noteGroupService = new NoteGroupService(azureCommunicator, new JsonTransformer<NoteGroup>());
 
 			FindViewById(Resource.Id.AddNoteButton).Click += AddNewNote;
+			var textField = FindViewById(Resource.Id.textField);
 
 			tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
-				Resource.Id.actionMenuView, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
+				Resource.Id.actionMenuView, textField, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
 		}
 
 		private void AddNewNote(object sender, EventArgs e)

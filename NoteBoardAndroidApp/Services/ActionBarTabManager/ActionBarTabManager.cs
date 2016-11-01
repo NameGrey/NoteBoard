@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Views;
+using Android.Widget;
 using Java.Security;
 using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.EntityServices;
@@ -13,20 +15,24 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 		private ActionBar actionBar;
 		private FragmentManager fragmentManager;
 		private int containerId;
+		private TextView textField;
 		private IEntityServices<Note> noteService;
 
-		public ActionBarTabManager(ActionBar actionBar, FragmentManager fragmentManager,
-			int containerId, IEnumerable<string> namesOfTabs, IEntityServices<Note> noteService)
+		public ActionBarTabManager(ActionBar actionBar, FragmentManager fragmentManager, int containerId, TextView textField, IEnumerable<string> namesOfTabs, IEntityServices<Note> noteService)
 		{
 			if(actionBar == null)
-				throw new InvalidParameterException("ActionBar should be initialized");
+				throw new InvalidParameterException("ActionBar parameter should be initialized");
 
 			if (fragmentManager == null)
-				throw new InvalidParameterException("FragmentManager should be initialized");
+				throw new InvalidParameterException("FragmentManager parameter should be initialized");
+
+			if (textField == null)
+				throw new InvalidParameterException("TextField parameter should be initialized");
 
 			this.actionBar = actionBar;
 			this.fragmentManager = fragmentManager;
 			this.containerId = containerId;
+			this.textField = textField;
 			this.noteService = noteService;
 
 			CustomizeActionBar();
@@ -83,8 +89,11 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 				if (fragment != null)
 				{
 					var groupName = actionBar.SelectedTab.Text;
+					
+					textField.Text = String.Empty;
 					noteService.Add(new Note() {GroupName = groupName, Name = noteText});
 					fragment.CreateNewNoteButton(noteText);
+					
 				}
 			}
 		}
