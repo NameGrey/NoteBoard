@@ -56,10 +56,20 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 			if (ItemClick != null)
 			{
 				Button button = (Button) sender;
-				string args = button.Text;
 
-				ItemClick(sender, args);
+				if (button != null)
+				{
+					string args = button.Text;
+
+					RemoveButton(button);
+					ItemClick(sender, args);
+				}
 			}
+		}
+
+		private void RemoveButton(Button button)
+		{
+			this.View.FindViewById<LinearLayout>(Resource.Id.linearVerticalLayout).RemoveView(button);
 		}
 	}
 }
