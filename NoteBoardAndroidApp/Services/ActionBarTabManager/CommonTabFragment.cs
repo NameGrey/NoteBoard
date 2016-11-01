@@ -38,7 +38,7 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 
 		private Button CreateButton(string text)
 		{
-			var button = new Button(this.Context);
+			var button = new Button(this.Activity.BaseContext);
 			button.SetText(text, TextView.BufferType.Normal);
 			button.Click += OnItemClick;
 

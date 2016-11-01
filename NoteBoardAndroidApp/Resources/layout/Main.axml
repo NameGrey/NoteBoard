@@ -51,8 +51,8 @@
                 android:background="@drawable/arrow_50h" />
         </RelativeLayout>
     </LinearLayout>
-    <ActionMenuView
-        android:minWidth="20px"
+  <RelativeLayout
+      android:minWidth="20px"
         android:minHeight="20px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
