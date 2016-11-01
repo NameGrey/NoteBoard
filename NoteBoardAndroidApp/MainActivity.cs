@@ -3,6 +3,7 @@ using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.ActionBarTabManager;
@@ -33,6 +34,8 @@ namespace NoteBoardAndroidApp
 
 			tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
 				Resource.Id.actionMenuView, textField, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
+
+			Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
 		}
 
 		private void AddNewNote(object sender, EventArgs e)
