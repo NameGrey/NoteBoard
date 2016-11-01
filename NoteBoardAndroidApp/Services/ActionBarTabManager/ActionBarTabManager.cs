@@ -51,12 +51,7 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 				// TODO: use names as primary keys
 				// TODO: use group service here instaed of list of names for groups
 				var items = noteService.GetCollection().Where(i=>i.GroupName == tabName).Select(i=>i.Name);
-				var tabFragment = new CommonTabFragment(items);
-				
-				tabFragment.ItemClick += (sender, clickedItemName) =>
-				{
-					noteService.Remove(clickedItemName);
-				};
+				var tabFragment = CreateTabFragment(items);
 
 			var tab = actionBar.NewTab();
 
@@ -68,7 +63,7 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 						e.FragmentTransaction.Remove(fragment);
 
 					items = noteService.GetCollection().Where(i => i.GroupName == tabName).Select(i => i.Name);
-					tabFragment = new CommonTabFragment(items);
+					tabFragment = CreateTabFragment(items);
 					e.FragmentTransaction.Add(containerId, tabFragment);
 				};
 				tab.TabUnselected += (sender, e) =>
@@ -78,6 +73,18 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 
 				actionBar.AddTab(tab);
 			}
+		}
+
+		private CommonTabFragment CreateTabFragment(IEnumerable<string> tabs)
+		{
+			var tabFragment = new CommonTabFragment(tabs);
+
+			tabFragment.ItemClick += (sender, clickedItemName) =>
+			{
+				noteService.Remove(clickedItemName);
+			};
+
+			return tabFragment;
 		}
 
 		public void CreateNewNoteButton(string noteText)
