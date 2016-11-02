@@ -1,0 +1,2 @@
+﻿1. Add check for empty notes and notes with Enter signs. For Enter signs it's better to add new note if it's possible.
+2. 
