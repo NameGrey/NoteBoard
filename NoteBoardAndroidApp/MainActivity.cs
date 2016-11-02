@@ -30,6 +30,8 @@ namespace NoteBoardAndroidApp
 			var noteGroupService = new NoteGroupService(azureCommunicator, new JsonTransformer<NoteGroup>());
 
 			FindViewById(Resource.Id.AddNoteButton).Click += AddNewNote;
+			FindViewById(Resource.Id.RecordButton).Click += StartRecordingButtonOnClick;
+
 			var textField = FindViewById(Resource.Id.textField) as TextView;
 
 			tabManager = new ActionBarTabManager(this.ActionBar, this.FragmentManager,
@@ -56,7 +58,12 @@ namespace NoteBoardAndroidApp
 			{
 				if (resultVal == Result.Ok)
 				{
-					
+					var resultString = speechHandler.GetResultString(data);
+
+					if (!String.IsNullOrEmpty(resultString))
+					{
+						tabManager.CreateNewNoteButton(resultString);
+					}
 				}
 			}
 			base.OnActivityResult(requestCode, resultVal, data);

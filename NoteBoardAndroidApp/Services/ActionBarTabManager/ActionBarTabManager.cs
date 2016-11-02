@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Android.App;
 using Android.Views;
 using Android.Widget;
@@ -87,6 +88,13 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 			return tabFragment;
 		}
 
+		private bool CheckEnteredNoteName(string noteName)
+		{
+			var regex = new Regex("\\n");
+
+			return !String.IsNullOrEmpty(noteName) && !regex.IsMatch(noteName); // return true if noteName is proper
+		}
+
 		public void CreateNewNoteButton(string noteText)
 		{
 			if (!String.IsNullOrEmpty(noteText))
@@ -96,11 +104,13 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 				if (fragment != null)
 				{
 					var groupName = actionBar.SelectedTab.Text;
-					
-					textField.Text = String.Empty;
-					noteService.Add(new Note() {GroupName = groupName, Name = noteText});
-					fragment.CreateNewNoteButton(noteText);
-					
+
+					if (CheckEnteredNoteName(noteText))
+					{
+						textField.Text = String.Empty;
+						noteService.Add(new Note() {GroupName = groupName, Name = noteText});
+						fragment.CreateNewNoteButton(noteText);
+					}
 				}
 			}
 		}
