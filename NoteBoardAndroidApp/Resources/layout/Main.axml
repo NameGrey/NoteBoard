@@ -5,14 +5,12 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:textAlignment="center"
     android:layout_centerInParent="true">
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/RecordButton"
         android:layout_centerInParent="true"
-        android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
         android:layout_marginRight="0.0dp"
         android:background="@drawable/microphonenotactive_up" />

@@ -13,6 +13,11 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 
 		public EventHandler<string> ItemClick;
 
+		public CommonTabFragment()
+		{
+			
+		}
+
 		public CommonTabFragment(IEnumerable<string> items)
 		{
 			this.items = items;
