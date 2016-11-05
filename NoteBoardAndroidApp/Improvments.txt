@@ -1,2 +1,0 @@
-﻿1. Use parallel programming to increase perfomance.
-2. 

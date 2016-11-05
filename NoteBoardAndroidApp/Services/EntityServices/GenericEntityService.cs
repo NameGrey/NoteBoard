@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
 using NoteBoardAndroidApp.Services.JsonTransformer;
 using Debug = System.Diagnostics.Debug;
@@ -57,24 +58,33 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 		public void Add(E entity)
 		{
 			var data = jsonTransformer.FromEntityToJson(entity);
-			var response = azureCommunicator.SendRequest(data, UriResolver.UriResolver.GetAddNewUrl(typeof(E)),
+
+			Thread thread = new Thread(() =>
+			{
+				var response = azureCommunicator.SendRequest(data, UriResolver.UriResolver.GetAddNewUrl(typeof(E)),
 				"POST");
 
-			if (response.Status != 200)
-			{
-				Debug.Print("Server Error: {0}", response.ErrorMessage);
-			}
+				if (response.Status != 200)
+				{
+					Debug.Print("Server Error: {0}", response.ErrorMessage);
+				}
+			});
+			thread.Start();
 		}
 
 		public void Remove(string name)
 		{
-			var url = String.Format(UriResolver.UriResolver.GetDeleteActionUrl(typeof(E)), name);
-			var response = azureCommunicator.SendRequest(String.Empty, url, "DELETE");
-
-			if (response.Status != 200)
+			var url = String.Format(UriResolver.UriResolver.GetDeleteActionUrl(typeof (E)), name);
+			Thread thread = new Thread(() =>
 			{
-				Debug.Print("Server Error: {0}", response.ErrorMessage);
-			}
+				var response = azureCommunicator.SendRequest(String.Empty, url, "DELETE");
+
+				if (response.Status != 200)
+				{
+					Debug.Print("Server Error: {0}", response.ErrorMessage);
+				}
+			});
+			thread.Start();
 		}
 	}
 }

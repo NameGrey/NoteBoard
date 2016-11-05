@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Android.App;
-using Android.Views;
 using Android.Widget;
 using Java.Security;
 using NoteBoardAndroidApp.Models;
@@ -108,8 +106,8 @@ namespace NoteBoardAndroidApp.Services.ActionBarTabManager
 					if (CheckEnteredNoteName(noteText))
 					{
 						textField.Text = String.Empty;
-						noteService.Add(new Note() {GroupName = groupName, Name = noteText});
 						fragment.CreateNewNoteButton(noteText);
+						noteService.Add(new Note() {GroupName = groupName, Name = noteText});
 					}
 				}
 			}
