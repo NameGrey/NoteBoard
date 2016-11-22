@@ -2,6 +2,7 @@
 using System.Linq;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -38,6 +39,7 @@ namespace NoteBoardAndroidApp
 				Resource.Id.actionMenuView, textField, noteGroupService.GetCollection().Select(i=>i.Name), noteService);
 
 			Window.SetSoftInputMode(SoftInput.StateAlwaysHidden);
+			Window.DecorView.SetBackgroundColor(new Color(48,48,48));
 		}
 
 		private void AddNewNote(object sender, EventArgs e)
