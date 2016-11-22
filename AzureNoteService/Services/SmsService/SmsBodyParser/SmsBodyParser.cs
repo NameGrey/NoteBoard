@@ -1,11 +1,14 @@
 ﻿
+using System;
+
 namespace AzureNoteService.Services.SmsService.SmsBodyParser
 {
 	public class SmsBodyParser:ISmsBodyParser
 	{
 		public ParsedBody ParseMessage(string message)
 		{
-			// For now we don't implement any complex logic here. Consider the message contains only name of group
+			// cut special number of Sms service
+			message = message.Substring(6);
 			return new ParsedBody() {GroupName = message};
 		}
 	}
