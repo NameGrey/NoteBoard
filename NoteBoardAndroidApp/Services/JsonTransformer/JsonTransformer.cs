@@ -19,7 +19,7 @@ namespace NoteBoardAndroidApp.Services.JsonTransformer
 
 		public ICollection<T> FromJsonToCollection(string data)
 		{
-			return _serializer.Deserialize<ICollection<T>>(data);
+			return _serializer.Deserialize<List<T>>(data);
 		}
 
 		public T FromJsonToEntity(string data)
