@@ -24,7 +24,7 @@ namespace NoteBoardAndroidApp.Services.Serializer
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T));
             ser.WriteObject(stream1, entity);
 
-            return stream1.ToString();
+            return Encoding.UTF8.GetString(stream1.ToArray());
         }
     }
 }
