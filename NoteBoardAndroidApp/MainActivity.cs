@@ -15,7 +15,7 @@ using NoteBoardAndroidApp.Services.Serializer;
 
 namespace NoteBoardAndroidApp
 {
-	[Activity(Label = "NoteBoardAndroidApp", MainLauncher = true, Icon = "@drawable/icon")]
+	[Activity(Label = "NoteBoardAndroidApp", MainLauncher = true, Icon = "@drawable/NoteBoardLogo")]
 	public class MainActivity : Activity
 	{
 		private SpeechHandler.SpeechHandler speechHandler = new SpeechHandler.SpeechHandler();
