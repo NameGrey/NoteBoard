@@ -5,6 +5,7 @@ using AzureNoteService.DAL;
 using AzureNoteService.DAL.Entities;
 using AzureNoteService.Repository;
 using log4net;
+using System.Data.SqlClient;
 
 namespace AzureNoteService.Controllers
 {
@@ -22,7 +23,7 @@ namespace AzureNoteService.Controllers
 				context.Database.Connection.Open();
 				noteGroupRepository = new DbNoteGroupRepository(context);
 			}
-			catch (Exception ex)
+			catch (SqlException ex)
 			{
 				logger.ErrorFormat("<NoteGroup repository initialization> : {0} - {1}", ex.Message, ex.StackTrace);
 			}
@@ -71,6 +72,7 @@ namespace AzureNoteService.Controllers
 			try
 			{
 				noteGroupRepository.Insert(noteGroup);
+				noteGroupRepository.SaveChanges();
 				logger.InfoFormat("<NoteGroup Controller Insert noteGroup> : {0}", "NoteGroup inserted");
 				return Ok();
 			}
@@ -88,6 +90,7 @@ namespace AzureNoteService.Controllers
 			try
 			{
 				noteGroupRepository.Delete(name);
+				noteGroupRepository.SaveChanges();
 				logger.InfoFormat("<NoteGroup Controller Insert noteGroup> : {0}", "NoteGroup deleted");
 				return Ok();
 			}
