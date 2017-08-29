@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteBoardAndroidApp", "NoteBoardAndroidApp\NoteBoardAndroidApp.csproj", "{86D27D92-86DC-4604-9DCB-6165FB792CC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureNoteService", "AzureNoteService\AzureNoteService.csproj", "{CA62A54D-7800-45E2-8D76-68E67259E7D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendNoteService", "BackendNoteService\BackendNoteService.csproj", "{CA62A54D-7800-45E2-8D76-68E67259E7D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureNoteService.DAL", "AzureNoteService.DAL\AzureNoteService.DAL.csproj", "{A4345027-5357-4A3B-8D14-14A1E7B6AA12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendNoteService.DAL", "BackendNoteService.DAL\BackendNoteService.DAL.csproj", "{A4345027-5357-4A3B-8D14-14A1E7B6AA12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureNoteService.Repository", "AzureNoteService.Repository\AzureNoteService.Repository.csproj", "{83BF9972-9AEF-46D3-95B4-1CF0C336EE83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendNoteService.Repository", "BackendNoteService.Repository\BackendNoteService.Repository.csproj", "{83BF9972-9AEF-46D3-95B4-1CF0C336EE83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
+using NoteBoardAndroidApp.Services.BackendServiceCommunicator;
 using NoteBoardAndroidApp.Services.JsonTransformer;
 using Debug = System.Diagnostics.Debug;
 
@@ -9,12 +9,12 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 {
 	public class GenericEntityService<E>: IEntityServices<E>
 	{
-		private IAzureServiceCommunicator azureCommunicator;
+		private IBackendServiceCommunicator backendService;
 		private readonly IJsonTransformer<E> jsonTransformer;
 
-		public GenericEntityService(IAzureServiceCommunicator azureCommunicator, IJsonTransformer<E> jsonTransformer)
+		public GenericEntityService(IBackendServiceCommunicator backendService, IJsonTransformer<E> jsonTransformer)
 		{
-			this.azureCommunicator = azureCommunicator;
+			this.backendService = backendService;
 			this.jsonTransformer = jsonTransformer;
 		}
 
@@ -22,7 +22,7 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 		{
 			E result = default(E);
 			var url = String.Format(UriResolver.UriResolver.GetEntityByIdUrl(typeof(E)), id);
-			var response = azureCommunicator.SendRequest(String.Empty, url, "GET");
+			var response = backendService.SendRequest(String.Empty, url, "GET");
 
 			if (response.Status == 200)
 			{
@@ -40,7 +40,7 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 		{
 			IEnumerable<E> result = default(IEnumerable<E>);
 
-			var response = azureCommunicator.SendRequest(String.Empty, UriResolver.UriResolver.GetCollectionUrl(typeof(E)),
+			var response = backendService.SendRequest(String.Empty, UriResolver.UriResolver.GetCollectionUrl(typeof(E)),
 				"GET");
 
 			if (response.Status == 200)
@@ -61,7 +61,7 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 
 			Thread thread = new Thread(() =>
 			{
-				var response = azureCommunicator.SendRequest(data, UriResolver.UriResolver.GetAddNewUrl(typeof(E)),
+				var response = backendService.SendRequest(data, UriResolver.UriResolver.GetAddNewUrl(typeof(E)),
 				"POST");
 
 				if (response.Status != 200)
@@ -77,7 +77,7 @@ namespace NoteBoardAndroidApp.Services.EntityServices
 			var url = String.Format(UriResolver.UriResolver.GetDeleteActionUrl(typeof (E)), name);
 			Thread thread = new Thread(() =>
 			{
-				var response = azureCommunicator.SendRequest(String.Empty, url, "DELETE");
+				var response = backendService.SendRequest(String.Empty, url, "DELETE");
 
 				if (response.Status != 200)
 				{

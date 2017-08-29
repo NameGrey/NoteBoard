@@ -43,6 +43,6 @@ captures/
 *.jks
 NoteBoardAndroidApp/obj/
 packages/
-AzureNoteService/obj/
-AzureNoteService.DAL/obj/
-AzureNoteService.Repository/obj/
+BackendNoteService/obj/
+BackendNoteService.DAL/obj/
+BackendNoteService.Repository/obj/

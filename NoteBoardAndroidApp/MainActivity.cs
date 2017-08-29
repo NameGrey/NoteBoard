@@ -8,7 +8,7 @@ using Android.Views;
 using Android.Widget;
 using NoteBoardAndroidApp.Models;
 using NoteBoardAndroidApp.Services.ActionBarTabManager;
-using NoteBoardAndroidApp.Services.AzureServiceCommunicator;
+using NoteBoardAndroidApp.Services.BackendServiceCommunicator;
 using NoteBoardAndroidApp.Services.EntityServices;
 using NoteBoardAndroidApp.Services.JsonTransformer;
 using NoteBoardAndroidApp.Services.Serializer;
@@ -27,9 +27,9 @@ namespace NoteBoardAndroidApp
 
 			SetContentView(Resource.Layout.Main);
 
-			var azureCommunicator = new AzureServiceCommunicator();
-			var noteService = new NoteService(azureCommunicator, new JsonTransformer<Note>(new JsonSerializer()));
-			var noteGroupService = new NoteGroupService(azureCommunicator, new JsonTransformer<NoteGroup>(new JsonSerializer()));
+			var backendCommunicator = new BackendServiceCommunicator();
+			var noteService = new NoteService(backendCommunicator, new JsonTransformer<Note>(new JsonSerializer()));
+			var noteGroupService = new NoteGroupService(backendCommunicator, new JsonTransformer<NoteGroup>(new JsonSerializer()));
 
 			FindViewById(Resource.Id.AddNoteButton).Click += AddNewNote;
 			FindViewById(Resource.Id.RecordButton).Click += StartRecordingButtonOnClick;

@@ -72,9 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ActionBarTabManager\ActionBarTabManager.cs" />
     <Compile Include="Services\ActionBarTabManager\IActionBarTabManager.cs" />
-    <Compile Include="Services\AzureResponse.cs" />
-    <Compile Include="Services\AzureServiceCommunicator\AzureServiceCommunicator.cs" />
-    <Compile Include="Services\AzureServiceCommunicator\IAzureServiceCommunicator.cs" />
+    <Compile Include="Services\BackendResponse.cs" />
+    <Compile Include="Services\BackendServiceCommunicator\BackendServiceCommunicator.cs" />
+    <Compile Include="Services\BackendServiceCommunicator\IBackendServiceCommunicator.cs" />
     <Compile Include="Services\EntityServices\GenericEntityService.cs" />
     <Compile Include="Services\EntityServices\IEntityServices.cs" />
     <Compile Include="Services\EntityServices\NoteGroupService.cs" />
