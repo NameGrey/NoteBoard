@@ -119,7 +119,7 @@ namespace NoteBoardAndroidApp.Services.Loggers
 												null,
 												null);
 			}
-			catch (IOException e)
+			catch (IOException)
 			{
 				Log.Error("com.cindypotvin.Logger", "Unable to log exception to file.");
 			}

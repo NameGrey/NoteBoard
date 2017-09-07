@@ -7,7 +7,7 @@ namespace NoteBoardAndroidApp.Services.BackendServiceCommunicator
 	public class BackendServiceCommunicator: IBackendServiceCommunicator
 	{
 		// TODO: it's better to create a new service who can take this value from configuration
-		const string baseUrl = "http://noteboardwebapiservice.azurewebsites.net/api";
+		const string baseUrl = "http://noteboard-api.artduviks.ru/api";
 
 		public BackendResponse SendRequest(string data, string uri, string method)
 		{
