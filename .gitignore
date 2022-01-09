@@ -46,3 +46,4 @@ packages/
 BackendNoteService/obj/
 BackendNoteService.DAL/obj/
 BackendNoteService.Repository/obj/
+.vs/
