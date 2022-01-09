@@ -47,3 +47,4 @@ BackendNoteService/obj/
 BackendNoteService.DAL/obj/
 BackendNoteService.Repository/obj/
 .vs/
+Noteboard.UI/obj/
