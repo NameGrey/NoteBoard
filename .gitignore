@@ -48,3 +48,5 @@ BackendNoteService.DAL/obj/
 BackendNoteService.Repository/obj/
 .vs/
 Noteboard.UI/obj/
+Noteboard.UI/Properties/PublishProfiles/
+Noteboard.UI/Properties/ServiceDependencies/app-noteboard-ui - Zip Deploy/profile.arm.json
