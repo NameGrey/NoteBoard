@@ -1,6 +1,17 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+#mic-button {
+    width: 100px;
+    height: 100px;
+}
+
+#mic-button:hover {
+    cursor: pointer;
+    width: 105px;
+    height: 105px;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;

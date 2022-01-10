@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackendNoteService.Reposito
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - NoteFrontApplication", "00 - NoteFrontApplication", "{ABB8A18C-4545-4B82-91CA-C7CE7343F848}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - NoteBackApplication", "01 - NoteBackApplication", "{D8C842AF-10E1-435D-8130-3F825682D31C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - NoteBusinessApplication", "01 - NoteBusinessApplication", "{D8C842AF-10E1-435D-8130-3F825682D31C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Noteboard.UI", "Noteboard.UI\Noteboard.UI.csproj", "{C1AECB99-E071-4D58-9483-597471F9A978}"
 EndProject
