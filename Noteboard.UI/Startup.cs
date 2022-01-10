@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Noteboard.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using Mapster;
 
 namespace Noteboard.UI
 {
@@ -22,7 +25,11 @@ namespace Noteboard.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.BootstrapBusiness(Configuration);
             services.AddControllersWithViews();
+
+            // Mapster Init
+            TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetEntryAssembly());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
