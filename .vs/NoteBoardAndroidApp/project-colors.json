@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c1aecb99-e071-4d58-9483-597471f9a978": {
+      "ProjectGuid": "c1aecb99-e071-4d58-9483-597471f9a978",
+      "DisplayName": "Noteboard.UI",
+      "ColorIndex": 0
+    },
+    "ca62a54d-7800-45e2-8d76-68e67259e7d8": {
+      "ProjectGuid": "ca62a54d-7800-45e2-8d76-68e67259e7d8",
+      "DisplayName": "BackendNoteService",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
