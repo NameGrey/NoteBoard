@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Noteboard.DataAccess.Azure\Noteboard.DataAccess.Azure.csproj" />
+    <ProjectReference Include="..\Noteboard.Domain\Noteboard.Domain.csproj" />
+    <ProjectReference Include="..\Noteboard.Shared\Noteboard.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

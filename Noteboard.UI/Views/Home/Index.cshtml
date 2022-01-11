@@ -1,0 +1,76 @@
+﻿@model List<NoteViewModel>;
+@{
+    ViewData["Title"] = "Noteboard";
+}
+
+<script>
+    function deleteNote(name) {
+        console.log("Delete note - " + name)
+        var data = JSON.stringify({ Note: name });
+
+        $.ajax({
+            url: '@Url.Action("DeleteNote", "Home")',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: data,
+            traditional: true
+        }).always(function() {
+            window.location.reload(true);
+        });
+    }
+</script>
+
+<div class="text-center">
+    <div class="mic-button-container animation">
+        <img id="mic-button" src="images/microphone.png"/>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 note-container">
+                @foreach (var note in @Model)
+                {
+                    <div class="row center">
+                        <div class="note-button" onclick="deleteNote('@note.Note')">
+                            <label>@note.Note</label>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        if (document.recognition) {
+            
+            var micButton = document.getElementById("mic-button");
+
+            if (micButton) {
+                micButton.onclick = function() {
+                    document.recognition.start();
+                    console.log('Start recognition.');
+                }
+            }
+            
+            document.recognition.onresult = function (event) {
+                var word = event.results[0][0].transcript;
+                var data = JSON.stringify({ Note: word });
+                console.log('Result received: ' + word + '.');
+
+                $.ajax({
+                    url: '@Url.Action("AddNote", "Home")',
+                    type: 'POST' ,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: data,
+                    traditional: true
+                }).always(function() {
+                    window.location.reload(true);
+                });
+            }
+        }
+    });
+</script>

@@ -1,0 +1,124 @@
+﻿.mic-button-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#mic-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-top: -7px;
+}
+
+#mic-button:hover {
+    cursor: pointer;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+  background-color: #f3c677;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #f3c677;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.note-button {
+    border: 2px solid #b33f62;
+    padding: 2px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    min-width: 200px;
+}
+
+    .note-button:hover {
+        background-color: #f9564f;
+        color: white;
+        cursor: pointer;
+    }
+
+.note-button > label:hover {
+    cursor: pointer;
+}
+
+div.center {
+    justify-content: center;
+}
+
+.note-container {
+    border-left-color: #b33f62;
+    border-right-color: #b33f62;
+    border-left-style: solid;
+    border-right-style: solid;
+    min-height: 500px;
+}
