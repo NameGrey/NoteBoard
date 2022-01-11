@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Noteboard.Business\Noteboard.Business.csproj" />
+    <ProjectReference Include="..\Noteboard.DataAccess.Azure\Noteboard.DataAccess.Azure.csproj" />
     <ProjectReference Include="..\Noteboard.Shared\Noteboard.Shared.csproj" />
   </ItemGroup>
 

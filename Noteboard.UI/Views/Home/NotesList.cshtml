@@ -3,24 +3,6 @@
     ViewData["Title"] = "Noteboard";
 }
 
-<script>
-    function deleteNote(name) {
-        console.log("Delete note - " + name)
-        var data = JSON.stringify({ Note: name });
-
-        $.ajax({
-            url: '@Url.Action("DeleteNote", "Home")',
-            type: 'POST',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: data,
-            traditional: true
-        }).always(function() {
-            window.location.reload(true);
-        });
-    }
-</script>
-
 <div class="text-center">
     <div class="mic-button-container animation">
         <img id="mic-button" src="images/microphone.png"/>
@@ -32,7 +14,7 @@
                 @foreach (var note in @Model)
                 {
                     <div class="row center">
-                        <div class="note-button" onclick="deleteNote('@note.Note')">
+                        <div class="note-button">
                             <label>@note.Note</label>
                         </div>
                     </div>
@@ -67,8 +49,8 @@
                     dataType: "json",
                     data: data,
                     traditional: true
-                }).always(function() {
-                    window.location.reload(true);
+                }).done(function() {
+                    alert('Note Added'); 
                 });
             }
         }

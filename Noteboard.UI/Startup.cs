@@ -4,12 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Noteboard.Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Mapster;
+using Noteboard.DataAccess.Azure;
+using Bootstrapper = Noteboard.UI.Maps.Bootstrapper;
 
 namespace Noteboard.UI
 {
@@ -25,11 +21,15 @@ namespace Noteboard.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions()
+                .ConfigureDataAccessAzure(Configuration);
+
+            services.BootstrapDataAccessAzure(Configuration);
             services.BootstrapBusiness(Configuration);
             services.AddControllersWithViews();
 
             // Mapster Init
-            TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetEntryAssembly());
+            Bootstrapper.InitializeMaps();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
